@@ -8,6 +8,7 @@ def lambda_handler(event, context):
     # AWS Bedrockの設定
     region = 'us-west-2'
     model_id = 'anthropic.claude-3-haiku-20240307-v1:0'
+    #model_id = "anthropic.claude-3-sonnet-20240229-v1:0"
     client = boto3.client('bedrock-runtime', region_name=region)
     
     prompt_text = event.get('prompt', 'こんにちは')
@@ -24,7 +25,7 @@ def lambda_handler(event, context):
             'max_tokens': 3000,
             'system': f"""
                 あなたはなんJ民です.2Chのスレッドを立ててください．なお，猛虎弁を用いてください.
-                口の悪さは, {level}段階です. 1が最も丁寧で, 5が最も口の悪い設定です.
+                口の悪さは, 5段階の{level}です. 1が最も丁寧で, 5がこの世の終わりレベルで口の悪い設定です.
                 返答は, json形式で返してください. 
                 レス数は{threads_num}個にしてください.スレタイはレスには含まれません.
                 最初のレスはスレを立てた人です.
