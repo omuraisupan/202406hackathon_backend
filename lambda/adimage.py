@@ -15,6 +15,7 @@ def lambda_handler(event, context):
     height = event.get("height", 512)
     styles_preset = event.get("styles_preset", "photographic")
     
+    
     params = {
         "modelId": model_id,
         "contentType": "application/json",
